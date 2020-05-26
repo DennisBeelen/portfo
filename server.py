@@ -56,14 +56,15 @@ quoting -> csv.QUOTE_MINIMAL
 
 
 # Contact:
-@app.route('/submit_form', methods=['POST', 'GET'])
+
+@app.route("/submit_form", methods=["POST", "GET"])
 def submit_form():
-    if request.method == "POST":
-    	try:
-	    	data = request.form.to_dict()
-	    	write_to_csv(data)
-	    	return redirect("/thankyou.html")
-	    except:
-	    	return "Did not save to database."
-    else:
-    	return "Something went wrong, try again."
+	if request.method == "POST":
+		try:
+			data = request.form.to_dict()
+			write_to_csv(data)
+			return redirect("/thankyou.html")
+		except:
+			return "did not save to database"
+	else:
+		return "Something went wrong, try again."
